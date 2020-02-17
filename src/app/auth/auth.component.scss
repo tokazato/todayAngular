@@ -1,0 +1,52 @@
+.auth__box {
+    width: 100%;
+    min-height: calc(100vh - 341px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth__form {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.auth__email, .auth__pass  {
+    padding: 20px 20px;
+    width: 250px;
+    border: 2px solid rgb(20, 50, 94);
+}
+.auth__pass {
+    margin: 10px 0;
+}
+.btn__group {
+    display: flex;
+}
+.auth__login {
+    width: 30%;
+    height: 35px;
+    border: 2px solid rgb(20, 50, 94);
+    background: rgb(20, 50, 94);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+        background: #fff;
+        color: rgb(20, 50, 94);
+        transition: 0.3s ease;
+    }
+}
+.auth__switch  {
+    width: 70%;
+    height: 35px;
+    border: 2px solid rgb(20, 50, 94);
+    background: rgb(20, 50, 94);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+        background: #fff;
+        color: rgb(20, 50, 94);
+        transition: 0.3s ease;
+    }
+}

@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="contact__box">
+        <h1>დაგვიკავშირდი</h1>
+        <div class="contact__content">
+            <div class="form__group">
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                    <div class="button__group">
+                        <button (click)="contc()" [ngClass]="{'cotact__active': isContact}" class="contact__text" type="button">კონტაქტი</button>
+                        <button (click)="presebt()" [ngClass]="{'cotact__active': !isContact}" class="contact__present" type="button">პრეტენზია</button>
+                    </div>
+                    <input 
+                        class="input__name"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="name"
+                        ngModel
+                        required>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="input__email" 
+                        name="email" 
+                        placeholder="E-mail"
+                        ngModel
+                        required
+                        email>
+                    <textarea 
+                        class="input__text" 
+                        name="text" 
+                        id="text" 
+                        cols="30" 
+                        rows="10" 
+                        placeholder="Your Text"
+                        ngModel
+                        required
+                    ></textarea>
+                    <button 
+                        (click)="test()" 
+                        type="submit" 
+                        [ngClass]="{'isValid': not__valid}" 
+                        [disabled]="!form.valid" 
+                        class="contact__form__submit" 
+                    >Send</button>
+                    <p class="cotact__pdf">მომხმარებელთა პრეტენზიების მიღების და განხილვის წესი</p>
+                </form>
+            </div>
+            <div class="address__box">
+                <div class="address__content">
+                    <div class="street">
+                        <h2>მისამართი</h2>
+                        <p>ირაკლი აბაშიძის ქ. 35, თბილისი, საქართველო, 0179</p>
+                    </div>
+                    <div class="street">
+                        <h2>ტელეფონი</h2>
+                        <a href="tel:995322237523"> +995 (32) 223 75 23</a>
+                    </div>
+                    <div class="street">
+                        <h2>ელ-ფოსტა</h2>
+                        <a href="mailto:info@cfigroup.ge"> info@cfigroup.ge</a>
+                    </div>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77979.73393698498!2d4.83392101075541!3d52.354703145318695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C%20Netherlands!5e0!3m2!1sen!2sge!4v1580892674221!5m2!1sen!2sge" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+.container {
+    max-width: 1366px;
+    margin: 0 auto;
+}
+.contact__box {
+    margin-bottom: 20px;
+}
+.contact__content {
+    display: flex;
+    justify-content: space-between;
+}
+.form__group {
+    width: 35%;
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.button__group {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+button {
+    outline: none;
+}
+.contact__text, .contact__present {
+    width: 45%;
+    height: 80px;
+    border-radius: 20px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    &:hover {
+        background: rgb(19, 66, 110);
+        color: #fff
+    }
+}
+.input__name, .input__email, .input__text {
+    padding: 20px 0 20px 20px;
+    border: 2px solid  rgb(28, 79, 126);
+    border-radius: 5px;
+}
+.input__email {
+    margin: 10px 0;
+}
+.send__box {
+    width: 100%;
+    margin: 0 auto;
+}
+.contact__form__submit {
+    width: 100%;
+    margin: 10px 0;
+    background: rgb(28, 79, 126);
+    color: #fff;
+    padding: 12px ;
+    border: 1px solid rgb(28, 79, 126);
+    cursor: pointer;
+    font-size: 18px;
+    &:hover {
+        background: #fff;
+        color:rgb(28, 79, 126);
+    }
+}
+.address__box {
+    width: 60%;
+}
+.address__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.street {
+    width: calc(100% / 3);
+}
+.map {
+    width: 100%;
+}
+.cotact__pdf {
+    border: 2px solid rgb(28, 79, 126);
+    padding: 10px;
+    text-align: center;
+}
+.cotact__active {
+    background: rgb(28, 79, 126);
+    color: #fff;
+}
+.not__valid {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+    border: 2px solid red;
+}

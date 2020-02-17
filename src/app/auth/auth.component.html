@@ -1,0 +1,31 @@
+<div class="auth__box">
+    <div class="auth__form">
+        <div class="error__box">
+            <p style="color: red">{{errorText}}</p>
+        </div>
+        <form (ngSubmit)="onSub(authForm)" #authForm="ngForm">
+            <input 
+                class="auth__email"
+                type="email"
+                id="email" 
+                name="email"
+                placeholder="E-Mail"
+                ngModel
+                required
+                email>
+            <input 
+                class="auth__pass"
+                type="password" 
+                id="password" 
+                name="password"
+                placeholder="Password"
+                ngModel
+                required
+                minlength="6">
+            <div class="btn__group">
+                <button class="auth__login" type="submit" [disabled]="!authForm.valid">{{isLogin ? 'Login' : 'Sign Up'}}</button> | 
+                <button class="auth__switch" (click)="onLogin()" type="button">Switch to {{isLogin ? "Sign Up" : "Sign In"}}</button>
+            </div>
+        </form>
+    </div>
+</div>

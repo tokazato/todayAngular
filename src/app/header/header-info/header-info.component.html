@@ -1,0 +1,34 @@
+<header>
+    <div class="container">
+        <div class="header__info">
+            <div class="logo__box">
+                <img src="../../../assets/img/Logo.png" alt="cfi__logo">
+            </div>
+            <div class="header__contact">
+                <div class="tel__number">
+                    <i class="fas fa-phone-volume"></i>
+                    <a href="tel:+995-32-223-75-23">+995 (32) 223 75 23</a>
+                </div>
+                <div class="header__line">
+                    <img src="../../../assets/img/Group 218.png" alt="header__line">
+                </div>
+                <div class="social__icon">
+                    <div class="fb__box"><i class="fab fa-facebook-f"></i></div>
+                    <div class="youtube__box"><i class="fab fa-youtube"></i></div>
+                </div>
+            </div>
+            <div class="language__box">
+                <div class="language__content">
+                    <i class="fas fa-chevron-down"></i>
+                    <a href="#">Ge</a>
+                    <a href="#">Eng</a>
+                    <a href="#">Ru</a>
+                </div>
+            </div>
+            <div class="auth">
+                <a (click)="authentic()" routerLink="/auth" >{{!isauthtenticated ? 'Login' : 'Log Out'}}</a> 
+            </div>
+        </div>
+    </div>
+</header>
+

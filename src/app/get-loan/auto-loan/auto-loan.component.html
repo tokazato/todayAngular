@@ -1,0 +1,112 @@
+<div class="container">
+    <h1 class="page__title" style="text-align: center;">Auto Loan</h1>
+    <div class="form__group">
+        <form [formGroup]="autoForm" (ngSubmit)="onSubmit(autoForm)">
+            <div class="private__info">
+                <h1>Private Information</h1>
+                <div style="text-align: right;">
+                    <a (click)="fetchForm()" style="font-size: 25px; font-weight: bold; cursor: pointer;">Fetch Form</a>
+                </div>
+                <hr>
+                <div class="first__section">
+                    <div class="top__field">
+                        <div class="name__box">
+                            <label for="name">Name</label>
+                            <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            formControlName="name"
+                            >
+                            <!-- <div class="testi" *ngIf="forbiddenNameValidator">
+                                <p>ricxi ar unda iyos</p>
+                            </div> -->
+                            <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)">
+
+                                <div *ngIf="name.errors.forbiddenName" class="name">shevset Name</div>
+
+                            </div> -->
+                        </div>
+                        <div class="name__box">
+                            <label for="surname">Surname</label>
+                            <input 
+                            type="text" 
+                            id="surname" 
+                            name="surname"
+                            formControlName="surname"
+                            >
+                        </div>
+                    </div>
+                    <div class="bottom__field">
+                        <div class="name__box">
+                            <label for="id">User Id</label>
+                            <input 
+                            type="text" 
+                            id="id" 
+                            name="id"
+                            formControlName="id"
+                            >
+                        </div>
+                        <div class="name__box">
+                            <label for="surname">Tel</label>
+                            <input 
+                            type="text" 
+                            id="tel" 
+                            name="tel"
+                            formControlName="tel"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let item of formErrorMessage"> {{ item }}</div>
+            </div>
+            <div class="loan__defend">
+                <h1>Loan Defend</h1>
+                <hr>
+                <div class="second__section">
+                    <div class="owner__box">
+                        <input type="radio">
+                        <label for="Owner-name">Owner Name</label>
+                        <input type="text" name="ownerName" id="ownerName" formControlName="ownerName">
+                        <label for="Owner-surname">Owner Surname</label>
+                        <input type="text" name="ownerSurnme" id="ownerSurnme" formControlName="ownerSurname">
+                        <label for="Owner-id-number">Owner Id Number</label>
+                        <input type="number" name="ownerId" id="ownerId" formControlName="ownerId">
+                        <label for="Owner-address">Owner address</label>
+                        <input type="text" name="ownerAddress" id="ownerAddress" formControlName="ownerAddress">
+                    </div>
+                    <div class="sak__code">
+                        <input type="radio">
+                        <label for="sac-code">Sac Code</label>
+                        <input type="number" name="sacCode" id="sacCode" formControlName="sacCode">
+                    </div>
+                </div>
+            </div>
+            <div class="third__section">
+                <h1>Loan About</h1>
+                <hr>
+                <div class="get__money__box">
+                    <div class="get__money">
+                        <label for="getMoney">Money</label>
+                        <input type="number" name="getMoney" id="getMoney" formControlName="getMoney">
+                    </div>
+                    <div class="currency__box">
+                        <div class="currency">
+                        <p 
+                            *ngFor="let item of currenc" 
+                            [ngClass]="{active: isActive(item)}"
+                            (click)="select(item)"
+                        >
+                            {{item}}
+                        </p>
+                        <input type="text" value="" formControlName="currenc" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button__box">
+                <button [disabled]="!autoForm.valid" class="send__button" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
