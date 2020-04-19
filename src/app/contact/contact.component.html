@@ -15,7 +15,9 @@
                         id="name"
                         placeholder="name"
                         ngModel
-                        required>
+                        required
+                        #name="ngModel">
+                        <span *ngIf="!name.valid && name.touched" style="color:red">Please Fill You Name</span>
                     <input 
                         type="email" 
                         id="email" 
@@ -24,7 +26,29 @@
                         placeholder="E-mail"
                         ngModel
                         required
-                        email>
+                        email
+                        #email="ngModel">
+                        <span *ngIf="!email.valid && email.touched" style="color:red">Please Fill Correct E-mail</span>
+                    <div *ngFor="let gender of genders">
+                        <label style="font-size: 18px; margin: 10px 0">
+                            <input 
+                                type="radio" 
+                                name="gender" 
+                                id="gender"
+                                ngModel
+                                required
+                                [value]="gender">
+                                {{gender}}
+                        </label>
+                    </div>
+                    <select 
+                        name="loanQuestion" 
+                        id="loanQuestion" 
+                        class="contact__select"
+                        [ngModel]="contactFormSelectAnswerDefault">
+                        <option value="First Loan">Your First Loan?</option>
+                        <option value="notFirst">Not First Loan</option>
+                    </select>
                     <textarea 
                         class="input__text" 
                         name="text" 
@@ -32,11 +56,14 @@
                         cols="30" 
                         rows="10" 
                         placeholder="Your Text"
-                        ngModel
+                        [(ngModel)]="answer"
                         required
-                    ></textarea>
+                        minlength="6"
+                        #yourText="ngModel">
+                    </textarea>
+                    <span *ngIf="!yourText.valid && yourText.touched" style="color:red">Please Write Min. 5 characters </span>
+                    <p>Your Reply: {{ answer }}</p>
                     <button 
-                        (click)="test()" 
                         type="submit" 
                         [ngClass]="{'isValid': not__valid}" 
                         [disabled]="!form.valid" 

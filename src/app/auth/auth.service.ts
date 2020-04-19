@@ -29,7 +29,10 @@ export class AuthService {
             returnSecureToken: true
         }
         ).pipe(
-            catchError(this.checkError)
+            catchError(this.checkError),
+            tap(par => {
+                this.userStyle(par.email, par.localId, par.idToken, +par.expiresIn)
+            })
         )
     }
 
@@ -62,6 +65,13 @@ export class AuthService {
         if(loadedUser.token) {
             this.user.next(loadedUser)
         }
+    }
+
+    autoLogout() {
+        setTimeout(() => {
+          localStorage.removeItem('userInfo')
+          this.user.next(null)
+        }, 1000 * 60 * 60 * 1);
     }
 
     logOut() {

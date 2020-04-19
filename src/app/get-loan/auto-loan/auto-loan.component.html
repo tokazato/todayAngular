@@ -18,14 +18,11 @@
                             name="name"
                             formControlName="name"
                             >
-                            <!-- <div class="testi" *ngIf="forbiddenNameValidator">
-                                <p>ricxi ar unda iyos</p>
-                            </div> -->
-                            <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)">
-
-                                <div *ngIf="name.errors.forbiddenName" class="name">shevset Name</div>
-
-                            </div> -->
+                            <span
+                                *ngIf="!autoForm.get('name').valid && autoForm.get('name').touched"
+                                style="color: red;">
+                                Please Enter a Valid Name
+                            </span>
                         </div>
                         <div class="name__box">
                             <label for="surname">Surname</label>
@@ -35,6 +32,11 @@
                             name="surname"
                             formControlName="surname"
                             >
+                            <span
+                                *ngIf="!autoForm.get('surname').valid && autoForm.get('surname').touched"
+                                style="color: red;">
+                                Please Enter a Valid surname
+                            </span>
                         </div>
                     </div>
                     <div class="bottom__field">
@@ -46,6 +48,11 @@
                             name="id"
                             formControlName="id"
                             >
+                            <span
+                                *ngIf="!autoForm.get('id').valid && autoForm.get('id').touched"
+                                style="color: red;">
+                                Valid id Must be 11 number
+                            </span>
                         </div>
                         <div class="name__box">
                             <label for="surname">Tel</label>
@@ -55,10 +62,15 @@
                             name="tel"
                             formControlName="tel"
                             >
+                            <span
+                                *ngIf="!autoForm.get('tel').valid && autoForm.get('tel').touched"
+                                style="color: red;">
+                                Valid Tel Must be 9 number
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div *ngFor="let item of formErrorMessage"> {{ item }}</div>
+                <!-- <div *ngFor="let item of formErrorMessage"> {{ item }}</div> -->
             </div>
             <div class="loan__defend">
                 <h1>Loan Defend</h1>
@@ -66,19 +78,49 @@
                 <div class="second__section">
                     <div class="owner__box">
                         <input type="radio">
+
                         <label for="Owner-name">Owner Name</label>
                         <input type="text" name="ownerName" id="ownerName" formControlName="ownerName">
+                        <span
+                            *ngIf="!autoForm.get('ownerName').valid && autoForm.get('ownerName').touched"
+                            style="color: red;">
+                            Valid Enter valid Name
+                        </span>
+
                         <label for="Owner-surname">Owner Surname</label>
                         <input type="text" name="ownerSurnme" id="ownerSurnme" formControlName="ownerSurname">
+                        <span
+                            *ngIf="!autoForm.get('ownerSurname').valid && autoForm.get('ownerSurname').touched"
+                            style="color: red;">
+                            Valid Enter valid ownerSurname
+                        </span>
+
                         <label for="Owner-id-number">Owner Id Number</label>
                         <input type="number" name="ownerId" id="ownerId" formControlName="ownerId">
+                        <span
+                            *ngIf="!autoForm.get('ownerId').valid && autoForm.get('ownerId').touched"
+                            style="color: red;">
+                            Valid Id Must Be 11 Number
+                        </span>
+
                         <label for="Owner-address">Owner address</label>
                         <input type="text" name="ownerAddress" id="ownerAddress" formControlName="ownerAddress">
+                        <span
+                            *ngIf="!autoForm.get('ownerAddress').valid && autoForm.get('ownerAddress').touched"
+                            style="color: red;">
+                            Valid Enter valid ownerAddress
+                        </span>
+
                     </div>
                     <div class="sak__code">
                         <input type="radio">
                         <label for="sac-code">Sac Code</label>
                         <input type="number" name="sacCode" id="sacCode" formControlName="sacCode">
+                        <span
+                            *ngIf="!autoForm.get('sacCode').valid && autoForm.get('sacCode').touched"
+                            style="color: red;">
+                            Valid Sac Code Must Be 15 Number
+                        </span>
                     </div>
                 </div>
             </div>
@@ -89,6 +131,11 @@
                     <div class="get__money">
                         <label for="getMoney">Money</label>
                         <input type="number" name="getMoney" id="getMoney" formControlName="getMoney">
+                        <span
+                            *ngIf="!autoForm.get('getMoney').valid && autoForm.get('getMoney').touched"
+                            style="color: red;">
+                            Please Fill this Field
+                        </span>
                     </div>
                     <div class="currency__box">
                         <div class="currency">

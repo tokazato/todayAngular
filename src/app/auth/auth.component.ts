@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +13,8 @@ export class AuthComponent implements OnInit {
   errorText: string;
   constructor(
     private authServ: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -31,7 +32,8 @@ export class AuthComponent implements OnInit {
     if(this.isLogin) {
       this.authServ.signIn(email, pass).subscribe(respoSucc => {
         console.log(respoSucc)
-        this.router.navigate(['/contact'])
+        this.router.navigate(['../'], {relativeTo: this.route})
+        this.authServ.autoLogout()
       },
       errorRes => {
         console.log(errorRes)
@@ -43,6 +45,7 @@ export class AuthComponent implements OnInit {
     } else {
       this.authServ.singUp(email, pass).subscribe(succ => {
         console.log(succ)
+        this.router.navigate(['../'], {relativeTo: this.route})
       },
       errorRes => {
         console.log(errorRes)
@@ -50,6 +53,7 @@ export class AuthComponent implements OnInit {
           this.errorText = errorRes; 
         }
       })
+      this.isLogin = false;
     }
 
 

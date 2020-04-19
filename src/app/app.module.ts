@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { HeaderInfoComponent } from './header/header-info/header-info.component';
 import { HeaderNavComponent } from './header/header-nav/header-nav.component';
 import { MainComponent } from './main/main.component';
-import { SwiperModule } from 'ngx-swiper-wrapper';
 import { AboutAsComponent } from './about-as/about-as.component';
 import { NewsComponent } from './news/news.component';
 import { LoansComponent } from './loans/loans.component';
@@ -48,7 +47,6 @@ import { FastLoanComponent } from './get-loan/fast-loan/fast-loan.component';
   ],
   imports: [
     BrowserModule,
-    SwiperModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

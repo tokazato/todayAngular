@@ -20,23 +20,19 @@ export class AutoLoanComponent implements OnInit {
   ngOnInit() {
     this.autoForm = new FormGroup(
     {
-      'name': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+'), forbiddenNameValidator(/bob/i)]),
+      'name': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+')]),
       'surname': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+')]),
       'id': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{11}')]),
       'tel': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{9}')]),
       'ownerName': new FormControl(null, [Validators.required]),
       'ownerSurname': new FormControl(null, [Validators.required]),
-      'ownerId': new FormControl(null, [Validators.required]),
+      'ownerId': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{11}')]),
       'ownerAddress': new FormControl(null, [Validators.required]),
       'getMoney': new FormControl(null, [Validators.required]),
-      'sacCode': new FormControl(null, [Validators.required]),
+      'sacCode': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{15}')]),
       'currenc': new FormControl(),
-    },
-    {
-      validators: [testia]
     }
     )
-    console.log(this.selected)
   }
 
 
@@ -49,27 +45,24 @@ export class AutoLoanComponent implements OnInit {
 
 
   onSubmit(form: FormGroup) {
-
     this.autoForm.get('currenc').setValue(this.selected)
 
     const fillForm = form.value;
     console.log(fillForm)
     this.loanserv.sendForm(fillForm).subscribe(par => {
       console.log(par)
+      alert('Success')
     })
     form.reset()
 
-    this.formErrorMessage = this.autoForm.errors && this.autoForm.errors.idErrors ? this.autoForm.errors.idErrors : [];
+    // this.formErrorMessage = this.autoForm.errors && this.autoForm.errors.idErrors ? this.autoForm.errors.idErrors : [];
 
   }
 
   fetchForm() {
-
-    this.loanserv.fetch().subscribe(ravi  => {
-      console.log( typeof ravi)
-      this.testFun(ravi)
+    this.loanserv.fetch().subscribe(papa => {
+      this.testFun(papa)
     })
-    
   }
 
 
@@ -100,8 +93,6 @@ export class AutoLoanComponent implements OnInit {
     this.autoForm.get('currenc').setValue(currenc);
 
     this.select(currenc);
-    
-
 }
 
   

@@ -13,6 +13,10 @@ import { Router } from '@angular/router';
 export class ContactComponent implements OnInit {
   isContact = true;
   isValid = false;
+  contactFormSelectAnswerDefault = "First Loan"
+  answer = '';
+  genders = ['Male', 'Female']
+
   constructor(
     private contacServ: ContactService,
     private authServ: AuthService,
@@ -29,12 +33,11 @@ export class ContactComponent implements OnInit {
   onSubmit(form: NgForm) {
     if(!form.valid) {return}
 
-    this.authServ.user.subscribe(userInfo => {
-      if(!userInfo){
-        alert('შეტყობინების გასაგზავნად გთხოვთ გაიაროთ ვერიფიკაცია')
-        this.router.navigate(['/auth'])
-      }
-    })
+    if(!localStorage.getItem('userInfo')){
+      alert('შეტყობინების გასაგზავნად გთხოვთ გაიაროთ ვერიფიკაცია')
+      this.router.navigate(['/auth'])
+      return;
+    }
 
     let name = form.value.name;
     let email = form.value.email;
@@ -44,6 +47,7 @@ export class ContactComponent implements OnInit {
       this.contacServ.contactText(name, email, text).subscribe(respo => {
         console.log(respo)
         alert('Success')
+        form.reset()
       })
     } else {
       this.contacServ.presentationText(name, email, text).subscribe(respo => {

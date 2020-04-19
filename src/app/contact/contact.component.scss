@@ -36,10 +36,14 @@ button {
         color: #fff
     }
 }
-.input__name, .input__email, .input__text {
+.input__name, .input__email, .input__text, .contact__select {
     padding: 20px 0 20px 20px;
     border: 2px solid  rgb(28, 79, 126);
     border-radius: 5px;
+}
+option {
+    font-size: 18px;
+    margin: 20px 0;
 }
 .input__email {
     margin: 10px 0;
@@ -91,4 +95,7 @@ button {
 }
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     border: 2px solid red;
+}
+textarea {
+    margin-top: 10px;
 }

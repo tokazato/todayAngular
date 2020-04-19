@@ -27,13 +27,13 @@ export class GetLoanService {
     }
 
     fetch() {
-       return this.http.get('https://cfi-group-angular.firebaseio.com/auto-loan.json')
-    //    .pipe(
-        //    map(takeFormField => {
-        //        console.log(takeFormField)
-        //        this.newForm.next(takeFormField)
-        //    })
-    //    )
+        return this.http.get('https://cfi-group-angular.firebaseio.com/auto-loan.json')
+        // .pipe(
+        //     map(takeFormField => {
+        //         console.log(takeFormField)
+        //         this.newForm.next(takeFormField)
+        //     })
+        // )
     }
 
     private testFun(para) {

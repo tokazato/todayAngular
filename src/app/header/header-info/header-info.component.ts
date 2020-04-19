@@ -15,6 +15,11 @@ export class HeaderInfoComponent implements OnInit {
     this.authServ.user.subscribe(para => {
       this.isauthtenticated = !!para
     })
+    if(localStorage.getItem('userInfo')){
+      this.isauthtenticated = true
+    } else {
+      this.isauthtenticated = false
+    }
   }
 
   authentic() {
@@ -23,5 +28,7 @@ export class HeaderInfoComponent implements OnInit {
       this.isauthtenticated = false;
     }
   }
+
+  
 
 }

@@ -1,12 +1,17 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
+
 export class SliderComponent implements OnInit, AfterViewInit {
-  mySwiper;
+  // mySwiper = Swiper;
+
+  mySwiper = new Swiper('.swiper-container', { /* ... */ });
+
   slides = [
     {
       img: '../../../assets/img/image.png',
@@ -27,11 +32,19 @@ export class SliderComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    
+    console.log(this.mySwiper)
+    //   var mySwiper = new Swiper('.swiper-container', {
+    //     pagination: '.swiper-pagination',
+    //     paginationClickable: true,
+    //     nextButton: '.swiper-button-next',
+    //     prevButton: '.swiper-button-prev',
+    //     // autoplay: 3000,
+    //     spaceBetween: 30
+    // });
   }
 
   ngAfterViewInit() {
-    // this.mySwiper = new Swiper('.swiper-container', {
+    // var mySwiper = new Swiper('.swiper-container', {
     //     pagination: '.swiper-pagination',
     //     paginationClickable: true,
     //     nextButton: '.swiper-button-next',
@@ -39,6 +52,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     //     autoplay: 3000,
     //     spaceBetween: 30
     // });
+
   }
 
 }
