@@ -21,7 +21,17 @@
                             <span
                                 *ngIf="!autoForm.get('name').valid && autoForm.get('name').touched"
                                 style="color: red;">
-                                Please Enter a Valid Name
+
+                                <span 
+                                    *ngIf="autoForm.get('name').errors['forgetNameis']">
+                                    This name is not valid
+                                </span>
+
+                                <span 
+                                    *ngIf="autoForm.get('name').errors['required']">
+                                    This field is required!
+                                </span>
+
                             </span>
                         </div>
                         <div class="name__box">
@@ -121,6 +131,13 @@
                             style="color: red;">
                             Valid Sac Code Must Be 15 Number
                         </span>
+                        <div formArrayName="hobbies" >
+                            <h4>Your Hobbies</h4>
+                            <button (click)="addHobies()" type="button" class="hobie-btn">Add Hobies</button>
+                            <div *ngFor="let hobb of autoForm.get('hobbies').controls; let i = index">
+                                <input  type="text" [formControlName]="i">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,8 +150,18 @@
                         <input type="number" name="getMoney" id="getMoney" formControlName="getMoney">
                         <span
                             *ngIf="!autoForm.get('getMoney').valid && autoForm.get('getMoney').touched"
-                            style="color: red;">
-                            Please Fill this Field
+                            style="color: red;">money must be more then 500 and less then 500 000
+
+                                <!-- <span 
+                                    *ngIf="autoForm.get('getMoney').errors['moneyIsNotValid']">
+                                    money must be more then 500 and less then 500 000
+                                </span> -->
+
+                                <!-- <span 
+                                    *ngIf="autoForm.get('getMoney').errors['required']">
+                                    This field is required!
+                                </span> -->
+
                         </span>
                     </div>
                     <div class="currency__box">

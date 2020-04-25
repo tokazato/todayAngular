@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidatorFn, FormArray } from '@angular/forms';
 import { GetLoanService } from '../get-loan.service';
 import { testia, forbiddenNameValidator } from '../get-loan.validator';
 import { ValueTransformer } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,12 +16,14 @@ export class AutoLoanComponent implements OnInit {
   formErrorMessage = [];
   currenc = ['GEL', 'EUR', 'USD']
   selected = 'GEL';
+  errorNames = ['toka', 'zato']
+
   constructor( private loanserv: GetLoanService) { }
 
   ngOnInit() {
     this.autoForm = new FormGroup(
     {
-      'name': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+')]),
+      'name': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+'), this.checkUserName.bind(this)]),
       'surname': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z]+')]),
       'id': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{11}')]),
       'tel': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{9}')]),
@@ -28,11 +31,53 @@ export class AutoLoanComponent implements OnInit {
       'ownerSurname': new FormControl(null, [Validators.required]),
       'ownerId': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{11}')]),
       'ownerAddress': new FormControl(null, [Validators.required]),
-      'getMoney': new FormControl(null, [Validators.required]),
+      'getMoney': new FormControl(null, [Validators.required], this.checkEmail ),
       'sacCode': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{15}')]),
       'currenc': new FormControl(),
+      'hobbies': new FormArray([]),
     }
     )
+    // this.autoForm.valueChanges.subscribe(value => {
+    //   console.log(value)
+    // })
+    // this.autoForm.statusChanges.subscribe(status => {
+    //   console.log(status)
+    // })
+
+    // this.autoForm.setValue({
+    //   'name': 'toka',
+    //   'surname': 'zatuashvili',
+    // })
+
+    // this.autoForm.patchValue({
+    //   'name': 'Tornike',
+    // })
+
+  }
+
+  addHobies() {
+    const newHobbies = new FormControl(null, [Validators.required]);
+    (<FormArray>this.autoForm.get('hobbies')).push(newHobbies);
+  }
+
+  checkUserName(control: FormControl): { [s: string] : boolean } {
+    if( this.errorNames.indexOf(control.value) !== -1) {
+      return {'forgetNameis': true }
+    }
+    return null;
+  }
+
+  checkEmail(controlGetMoney: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>( (resolve, reject) => {
+      setTimeout(() => {
+        if(controlGetMoney.value < 500 || controlGetMoney.value > 500000) {
+          resolve( {'moneyIsNotValid': true} );
+        } else {
+          resolve(null);
+        }
+      }, 1500);
+    })
+    return promise;
   }
 
 
@@ -46,6 +91,7 @@ export class AutoLoanComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     this.autoForm.get('currenc').setValue(this.selected)
+    console.log(this.autoForm)
 
     const fillForm = form.value;
     console.log(fillForm)
