@@ -1,19 +1,22 @@
 <div class="slider">
     <div class="slider__box">
-        <!-- Swiper -->
+
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide main__slider" *ngFor="let item of slides">
                     <h1 class="img__title">{{item.title}}</h1>
                     <p class="car__description">{{ item.description}}</p>
-                  <img [src]="item.img" alt="">
+                  <img class="main-img" [src]="item.img" alt="">
                 </div>
             </div>
-            <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
-            <!-- Add Arrows -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+
+       
+
     </div>
 </div>
+
+

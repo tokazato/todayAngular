@@ -1,5 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { DataStorageService } from 'src/app/share/data-storage.service';
+
 import Swiper from 'swiper';
+
 
 @Component({
   selector: 'app-slider',
@@ -8,51 +11,81 @@ import Swiper from 'swiper';
 })
 
 export class SliderComponent implements OnInit, AfterViewInit {
-  // mySwiper = Swiper;
+  slides;
 
-  mySwiper = new Swiper('.swiper-container', { /* ... */ });
-
-  slides = [
-    {
-      img: '../../../assets/img/image.png',
-      title: 'წლის შეთავაზება მოდელი',
-      description: 'მოდელი შეიქმნა 2010 წელს',
-    },
-    {
-      img: '../../../assets/img/Background.png',
-      title: 'საუკეთესო შეთავაზება მოდელი',
-      description: 'მოდელი შეიქმნა 2012 წელს',
-    },
-    {
-      img: '../../../assets/img/image.png',
-      title: 'წლის შეთავაზება მოდელი',
-      description: 'მოდელი შეიქმნა 2015 წელს',
-    },
-  ];
-  constructor() { }
+  constructor( private dataStorageService: DataStorageService ) { }
 
   ngOnInit() {
-    console.log(this.mySwiper)
-    //   var mySwiper = new Swiper('.swiper-container', {
-    //     pagination: '.swiper-pagination',
-    //     paginationClickable: true,
-    //     nextButton: '.swiper-button-next',
-    //     prevButton: '.swiper-button-prev',
-    //     // autoplay: 3000,
-    //     spaceBetween: 30
-    // });
+
+    this.slides = this.dataStorageService.returnmethod();
+    
+    this.dataStorageService.sliderInService.subscribe(data => {
+      this.slides = data;
+
+      setTimeout(() => {
+        const mySwiper = new Swiper ('.swiper-container', {
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      }, 10);
+
+    })
+
+    if(this.slides) {
+      setTimeout(() => {
+        const mySwiper = new Swiper ('.swiper-container', {
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      }, 10);
+    }
+    
+    
   }
 
   ngAfterViewInit() {
-    // var mySwiper = new Swiper('.swiper-container', {
-    //     pagination: '.swiper-pagination',
-    //     paginationClickable: true,
-    //     nextButton: '.swiper-button-next',
-    //     prevButton: '.swiper-button-prev',
-    //     autoplay: 3000,
-    //     spaceBetween: 30
-    // });
 
+    // this.dataStorageService.getSlides();
+
+    // this.deleteSubsciption = this.dataStorageService.subjectReturn().subscribe( param => {
+    //   console.log('rame');
+    //   this.slides = param;
+      
+      
+    //   if( ! this.dataStorageService.getSlider() ) {
+
+    //     setTimeout(() => {
+    //       this.dataStorageService.createSlider();
+    //       this.objectSlides = this.dataStorageService.getSlider();
+    //       // this.objectSlides = new Swiper ('.swiper-container', {
+    //       //   navigation: {
+    //       //     nextEl: '.swiper-button-next',
+    //       //     prevEl: '.swiper-button-prev',
+    //       //   },
+    //       // });
+    //     }, 1000);
+
+    //   } else {
+    //     this.objectSlides = this.dataStorageService.getSlider();
+    //     this.objectSlides.update();
+    //   }
+    // });
+   
   }
+
+  
+
+
+
+  
+
+  
+
+  
+
 
 }

@@ -4,6 +4,7 @@ import { GetLoanService } from '../get-loan.service';
 import { testia, forbiddenNameValidator } from '../get-loan.validator';
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,11 @@ export class AutoLoanComponent implements OnInit {
   currenc = ['GEL', 'EUR', 'USD']
   selected = 'GEL';
   errorNames = ['toka', 'zato']
+  isAuthorized = false;
 
-  constructor( private loanserv: GetLoanService) { }
+  constructor( 
+                private loanserv: GetLoanService,
+                private router: Router) { }
 
   ngOnInit() {
     this.autoForm = new FormGroup(
@@ -53,6 +57,9 @@ export class AutoLoanComponent implements OnInit {
     //   'name': 'Tornike',
     // })
 
+    if(localStorage.getItem('userInfo')) {
+      this.isAuthorized = true;
+    }
   }
 
   addHobies() {
@@ -90,6 +97,11 @@ export class AutoLoanComponent implements OnInit {
 
 
   onSubmit(form: FormGroup) {
+    if(!localStorage.getItem('userInfo')){
+      alert('შეტყობინების გასაგზავნად გთხოვთ გაიაროთ ვერიფიკაცია')
+      this.router.navigate(['/auth'])
+      return;
+    }
     this.autoForm.get('currenc').setValue(this.selected)
     console.log(this.autoForm)
 

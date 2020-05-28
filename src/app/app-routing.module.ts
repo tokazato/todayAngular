@@ -12,10 +12,12 @@ import { AuthComponent } from './auth/auth.component';
 import { BusinessLoanComponent } from './get-loan/business-loan/business-loan.component';
 import { AutoLoanComponent } from './get-loan/auto-loan/auto-loan.component';
 import { FastLoanComponent } from './get-loan/fast-loan/fast-loan.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes  = [
-    {path: '', redirectTo: '/main' , pathMatch: 'full'},
-    {path: 'main', component: MainComponent},
+    // {path: '', redirectTo: '/main' , pathMatch: 'full'},
+    {path: '', component: MainComponent},
+    // {path: 'main', component: MainComponent},
     {path: 'aboutas', component: AboutAsComponent},
     {path: 'news', component: NewsComponent},
     {path: 'loans', component: LoansComponent},
@@ -26,6 +28,8 @@ const appRoutes: Routes  = [
     {path: 'business-loan', component: BusinessLoanComponent},
     {path: 'auto-loan', component: AutoLoanComponent},
     {path: 'fast-loan', component: FastLoanComponent},
+    {path: 'page-not-found', component: PageNotFoundComponent},
+    {path: '**', redirectTo: '/page-not-found' }
 ]
 
 @NgModule({

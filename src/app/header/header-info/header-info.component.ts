@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -8,8 +9,15 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./header-info.component.scss']
 })
 export class HeaderInfoComponent implements OnInit {
-  constructor(private authServ: AuthService) { }
   isauthtenticated = false;
+
+  constructor( 
+    private el: ElementRef,
+    private authServ: AuthService, 
+    private translate: TranslateService) 
+    { translate.setDefaultLang('en'); }
+
+  
 
   ngOnInit() {
     this.authServ.user.subscribe(para => {
@@ -20,6 +28,8 @@ export class HeaderInfoComponent implements OnInit {
     } else {
       this.isauthtenticated = false
     }
+
+    
   }
 
   authentic() {
@@ -28,6 +38,12 @@ export class HeaderInfoComponent implements OnInit {
       this.isauthtenticated = false;
     }
   }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
+
+ 
 
   
 

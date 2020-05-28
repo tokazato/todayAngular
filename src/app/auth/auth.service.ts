@@ -68,10 +68,15 @@ export class AuthService {
     }
 
     autoLogout() {
-        setTimeout(() => {
-          localStorage.removeItem('userInfo')
-          this.user.next(null)
-        }, 1000 * 60 * 60 * 1);
+        if( localStorage.getItem('userInfo') ) {
+            var expireDate = JSON.parse( localStorage.getItem('userInfo'))
+            var expireDateInNumber = new Date(expireDate.expirenDate).getTime()
+            var currentDate = new Date().getTime()
+            if(expireDateInNumber < currentDate) {
+                localStorage.removeItem('userInfo')
+                this.user.next(null)
+            }
+        }
     }
 
     logOut() {

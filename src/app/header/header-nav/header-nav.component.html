@@ -2,16 +2,16 @@
     <nav class="container navigation">
         <ul class="nav__ul">
             <li class="nav__li">
-                <a routerLink="/main" class="nav__a">მთავარი</a>
+                <a routerLink="" class="nav__a">{{ 'nav.home' | translate }}</a>
             </li>
             <li class="nav__li">
-                <a routerLink="/aboutas" class="nav__a">ჩვენ შესახებ</a>
+                <a routerLink="/aboutas" class="nav__a">{{ 'nav.aboutAs' | translate }}</a>
             </li>
             <li class="nav__li">
-                <a routerLink="/news" class="nav__a">სიახლეები</a>
+                <a routerLink="/news" class="nav__a">{{ 'nav.news' | translate }}</a>
             </li>
             <li class="nav__li loan__dropdown">
-                <a routerLink="/loans" class="nav__a">სესხები</a>
+                <a routerLink="/loans" class="nav__a">{{ 'nav.loans' | translate }}</a>
                 <ul class="dropdown">
                     <li>
                         <a>იპოთეკური სესხი</a>
@@ -31,7 +31,7 @@
                 </ul>
             </li>
             <li class="nav__li loan__dropdown">
-                <a routerLink="/getloan" class="nav__a">შეავსე განაცხადი</a>
+                <a class="nav__a">{{ 'nav.fillApp' | translate }}</a>
                 <ul class="dropdown">
                     <li>
                         <a routerLink="/auto-loan">Auto Loan</a>
@@ -45,10 +45,10 @@
                 </ul>
             </li>
             <li class="nav__li">
-                <a routerLink="/calculator" class="nav__a">კალკულატორი</a>
+                <a routerLink="/calculator" class="nav__a">{{ 'nav.calculator' | translate }}</a>
             </li>
             <li class="nav__li">
-                <a routerLink="/contact" class="nav__a">დაგვიკავშირდით</a>
+                <a routerLink="/contact" class="nav__a">{{ 'nav.contact' | translate }}</a>
             </li>
         </ul>
     </nav>

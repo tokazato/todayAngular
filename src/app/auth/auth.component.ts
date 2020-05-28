@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { DataStorageService } from '../share/data-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +16,9 @@ export class AuthComponent implements OnInit {
   constructor(
     private authServ: AuthService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private locat: Location,
+    private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
   }
@@ -31,9 +35,11 @@ export class AuthComponent implements OnInit {
 
     if(this.isLogin) {
       this.authServ.signIn(email, pass).subscribe(respoSucc => {
-        console.log(respoSucc)
-        this.router.navigate(['../'], {relativeTo: this.route})
+        // this.router.navigate(['../'], {relativeTo: this.route})
+        this.locat.back()
         this.authServ.autoLogout()
+        this.dataStorageService.fetchData().subscribe()
+        
       },
       errorRes => {
         console.log(errorRes)
@@ -44,7 +50,7 @@ export class AuthComponent implements OnInit {
       )
     } else {
       this.authServ.singUp(email, pass).subscribe(succ => {
-        console.log(succ)
+        this.dataStorageService.fetchData().subscribe()
         this.router.navigate(['../'], {relativeTo: this.route})
       },
       errorRes => {

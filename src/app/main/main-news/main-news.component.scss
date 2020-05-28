@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 .news__content {
-    margin: 15px 0;
+    margin: 50px 80px;
 }
 .news__title {
     display: flex;
@@ -12,7 +12,6 @@
 }
 .news__box {
     display: flex;
-    align-items: center;
     margin-top: 50px;
     border: 1px solid rgb(165, 164, 164);
     border-radius: 10px;
@@ -41,7 +40,4 @@
 }
 .news__title__inbox {
     font-size: 28px;
-    position: absolute;
-    left: 35%;
-    top: 20%;
 }

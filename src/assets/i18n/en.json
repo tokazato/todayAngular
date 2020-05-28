@@ -1,0 +1,11 @@
+{
+    "nav": {
+        "home": "home",
+        "aboutAs": "About As",
+        "news": "News",
+        "loans": "Loans",
+        "fillApp": "Fill Application",
+        "calculator": "Calculator",
+        "contact": "Contact"
+    }
+}

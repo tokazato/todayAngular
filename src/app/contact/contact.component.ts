@@ -30,6 +30,7 @@ export class ContactComponent implements OnInit {
   presebt() {
     this.isContact = false;
   }
+
   onSubmit(form: NgForm) {
     if(!form.valid) {return}
 

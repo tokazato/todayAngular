@@ -1,3 +1,6 @@
+header {
+    margin: 0 30px;
+}
 .container {
     max-width: 1366px;
     margin: 0 auto;
@@ -54,6 +57,7 @@
     position: relative;
     height: 50px;
     width: 80px;
+    z-index: 1;
 }
 .language__content {
     border: 2px solid rgb(12, 81, 145);
@@ -80,6 +84,7 @@
         text-decoration: none;
         font-size: 20px;
         color: rgb(44, 12, 12);
+        cursor: pointer;
     }
 }
 .auth {
@@ -96,4 +101,15 @@
         font-weight: bold;
         color: #fff
     }
+}
+@media only screen and (max-width: 1250px) {
+    .header__line {
+        display: none;
+    }
+    .header__contact {
+        width: 35%;
+    }
+}
+.myClass {
+    color: red;
 }

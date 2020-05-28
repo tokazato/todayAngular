@@ -29,7 +29,7 @@ p {
   }
 .main__slider {
     width: 100vw;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 140px);
     &::after {
         content: '';
         position: absolute;
@@ -48,12 +48,15 @@ p {
     top: 20%;
     z-index: 2;
     color: #fff;
-    font-size: 50px;
+    font-size: 35px;
 }
 .car__description {
     position: absolute;
     z-index: 2;
     top: 35%;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+}
+.main-img {
+    object-fit: cover;
 }

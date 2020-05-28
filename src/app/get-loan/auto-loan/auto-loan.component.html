@@ -1,10 +1,10 @@
 <div class="container">
     <h1 class="page__title" style="text-align: center;">Auto Loan</h1>
-    <div class="form__group">
+    <div style="margin: 0 30px;" class="form__group">
         <form [formGroup]="autoForm" (ngSubmit)="onSubmit(autoForm)">
             <div class="private__info">
                 <h1>Private Information</h1>
-                <div style="text-align: right;">
+                <div *ngIf="isAuthorized" style="text-align: right;">
                     <a (click)="fetchForm()" style="font-size: 25px; font-weight: bold; cursor: pointer;">Fetch Form</a>
                 </div>
                 <hr>
@@ -87,8 +87,7 @@
                 <hr>
                 <div class="second__section">
                     <div class="owner__box">
-                        <input type="radio">
-
+                        <input type="radio" >
                         <label for="Owner-name">Owner Name</label>
                         <input type="text" name="ownerName" id="ownerName" formControlName="ownerName">
                         <span

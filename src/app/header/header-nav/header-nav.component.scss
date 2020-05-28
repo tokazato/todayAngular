@@ -22,12 +22,17 @@ body {
     padding: 0;
 }
 .nav__li {
-    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 .nav__a {
-    padding: 20px 22px;
+    padding: 22px 22px;
     color: #fff;
     cursor: pointer;
+    @media only screen and (max-width: 1200px) {
+        font-size: 13px;
+    }
 }
 .loan__dropdown {
     &:hover .dropdown  {
@@ -38,14 +43,18 @@ body {
 .dropdown {
     position: absolute;
     margin-left: 20px;
-    margin-top: 19px;
     background: #fff;
     opacity: 0;
     visibility: hidden;
     padding: 10px 20px;
     z-index: 9;
+    top: 60px;
     li {
         margin-bottom: 10px;
+    }
+    a {
+        color: rgb(10, 61, 90);
+        font-size: 15px;
     }
 }
 

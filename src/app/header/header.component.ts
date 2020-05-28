@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
   constructor(private authServ: AuthService) { }
 
   ngOnInit() {
-    this.authServ.autoLogin()
   }
 
 }

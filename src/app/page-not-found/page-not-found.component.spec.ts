@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SliderComponent } from './slider.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
-describe('SliderComponent', () => {
-  let component: SliderComponent;
-  let fixture: ComponentFixture<SliderComponent>;
+describe('PageNotFoundComponent', () => {
+  let component: PageNotFoundComponent;
+  let fixture: ComponentFixture<PageNotFoundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SliderComponent ]
+      declarations: [ PageNotFoundComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SliderComponent);
+    fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
