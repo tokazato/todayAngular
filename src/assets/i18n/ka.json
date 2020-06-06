@@ -4,6 +4,14 @@
         "aboutAs": "ჩვენ შესახებ",
         "news": "სიახლეები",
         "loans": "მთავარი",
+        "DropDownLink": {
+            "mortgageLoan": "იპოთეკური სესხი",
+            "consumerLoan": "სამომხმარებლო სესხი",
+            "businessLoan": "ბიზნესი სესხი",
+            "agroLoan": "აგრო სესხი",
+            "autoLoan": "ავტო სესხი",
+            "fastLoan": "სწრაფი სესხი"
+        },
         "fillApp": "შეავსე განაცხადი",
         "calculator": "კალკულატორი",
         "contact": "დაგვიკავშირდით"

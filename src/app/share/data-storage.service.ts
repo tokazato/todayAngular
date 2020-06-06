@@ -14,17 +14,15 @@ export class DataStorageService {
 
     constructor( private http: HttpClient ) {}
 
-    returnmethod() {
-        return this.slides;
-    }
+    // returnmethod() {
+    //     return this.slides;
+    // }
 
     // subjectReturn() {
-    //     return this.sliderInService;
+    //     return this.getSlides()
     // }
 
-    // getSlides() {
-    //    this.sliderInService.next(this.slides);
-    // }
+    
 
     // createSlider() {
     //     this.objecSlides = new Swiper ('.swiper-container', {
@@ -40,16 +38,21 @@ export class DataStorageService {
     // }
 
 
+
     fetchData() {
         return this.http.get(`https://cfi-group-angular.firebaseio.com/home/main-slider.json`).pipe(
             tap(slide => {
                 this.slides = slide;
-                this.sliderInService.next(this.slides.slice());
-                // this.getSlides();
-                // this.sliderInService.next(slide)
+                this.getSlides();
             })
         )
     }
+
+    getSlides() {
+        if(this.slides) {
+            this.sliderInService.next(this.slides);
+        }
+     }
 
     
 }

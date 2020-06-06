@@ -10,14 +10,23 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderInfoComponent implements OnInit {
   isauthtenticated = false;
+  languages = [
+    {
+      lang: 'EN', status: true, clickLang: 'en',
+    },
+    {
+      lang: 'GE', status: false, clickLang: 'ka',
+    },
+    {
+      lang: 'RU', status: false, clickLang: 'ru',
+    },
+  ];
 
   constructor( 
     private el: ElementRef,
     private authServ: AuthService, 
     private translate: TranslateService) 
     { translate.setDefaultLang('en'); }
-
-  
 
   ngOnInit() {
     this.authServ.user.subscribe(para => {
@@ -28,8 +37,14 @@ export class HeaderInfoComponent implements OnInit {
     } else {
       this.isauthtenticated = false
     }
+  }
 
-    
+  getActive( lang, clicklang ) {
+    this.translate.use(clicklang);
+    this.languages.forEach(element => {
+      element.status = false;
+    })
+    lang.status = true;
   }
 
   authentic() {
@@ -39,9 +54,7 @@ export class HeaderInfoComponent implements OnInit {
     }
   }
 
-  useLanguage(language: string) {
-    this.translate.use(language);
-  }
+  
 
  
 

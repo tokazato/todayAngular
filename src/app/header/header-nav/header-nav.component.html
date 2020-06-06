@@ -1,54 +1,13 @@
 <div class="navigation__box">
     <nav class="container navigation">
         <ul class="nav__ul">
-            <li class="nav__li">
-                <a routerLink="" class="nav__a">{{ 'nav.home' | translate }}</a>
-            </li>
-            <li class="nav__li">
-                <a routerLink="/aboutas" class="nav__a">{{ 'nav.aboutAs' | translate }}</a>
-            </li>
-            <li class="nav__li">
-                <a routerLink="/news" class="nav__a">{{ 'nav.news' | translate }}</a>
-            </li>
-            <li class="nav__li loan__dropdown">
-                <a routerLink="/loans" class="nav__a">{{ 'nav.loans' | translate }}</a>
-                <ul class="dropdown">
-                    <li>
-                        <a>იპოთეკური სესხი</a>
-                    </li>
-                    <li>
-                        <a>იპოთეკური სესხი</a>
-                    </li>
-                    <li>
-                        <a>იპოთეკური სესხი</a>
-                    </li>
-                    <li>
-                        <a>იპოთეკური სესხი</a>
-                    </li>
-                    <li>
-                        <a>იპოთეკური სესხი</a>
+            <li *ngFor="let link of navigation" [ngClass]="link.classNameForLi">
+                <a [routerLink]="link.routeLink" class="nav__a">{{ link.name | translate }}</a>
+                <ul *ngIf="link.dropDown" class="dropdown">
+                    <li *ngFor="let dropLink of link.dropDownLinks">
+                        <a [routerLink]="dropLink.routeLink">{{dropLink.nameLink | translate}}</a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav__li loan__dropdown">
-                <a class="nav__a">{{ 'nav.fillApp' | translate }}</a>
-                <ul class="dropdown">
-                    <li>
-                        <a routerLink="/auto-loan">Auto Loan</a>
-                    </li>
-                    <li>
-                        <a routerLink="/business-loan">Business Loan</a>
-                    </li>
-                    <li>
-                        <a routerLink="/fast-loan">Fast Loan</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__li">
-                <a routerLink="/calculator" class="nav__a">{{ 'nav.calculator' | translate }}</a>
-            </li>
-            <li class="nav__li">
-                <a routerLink="/contact" class="nav__a">{{ 'nav.contact' | translate }}</a>
             </li>
         </ul>
     </nav>

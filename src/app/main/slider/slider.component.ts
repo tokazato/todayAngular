@@ -17,37 +17,60 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.slides = this.dataStorageService.returnmethod();
+    // this.slides = this.dataStorageService.returnmethod();
     
-    this.dataStorageService.sliderInService.subscribe(data => {
-      this.slides = data;
+    // this.dataStorageService.sliderInService.subscribe(data => {
+    //   this.slides = data;
 
-      setTimeout(() => {
-        const mySwiper = new Swiper ('.swiper-container', {
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-      }, 10);
+    //   setTimeout(() => {
+    //     const mySwiper = new Swiper ('.swiper-container', {
+    //       navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //       },
+    //     });
+    //   }, 10);
 
-    })
+    // })
 
-    if(this.slides) {
-      setTimeout(() => {
-        const mySwiper = new Swiper ('.swiper-container', {
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-      }, 10);
-    }
+    // if(this.slides) {
+    //   setTimeout(() => {
+    //     const mySwiper = new Swiper ('.swiper-container', {
+    //       navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //       },
+    //     });
+    //   }, 10);
+    // }
     
     
   }
 
   ngAfterViewInit() {
+
+   
+    if(!this.slides) {
+      this.dataStorageService.getSlides();
+      console.log('if-shi var')
+    }
+
+    this.dataStorageService.sliderInService.subscribe(paramSlides => {
+      console.log(paramSlides)
+      this.slides = paramSlides;
+      console.log(this.slides)
+      
+    });
+
+    
+
+    console.log('asd ' + this.slides)
+
+    
+
+    
+
+    
 
     // this.dataStorageService.getSlides();
 

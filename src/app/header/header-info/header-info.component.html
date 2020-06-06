@@ -20,13 +20,16 @@
             <div class="language__box">
                 <div class="language__content">
                     <i class="fas fa-chevron-down"></i>
-                    <a (click)="useLanguage('en')">Eng</a>
-                    <a (click)="useLanguage('ka')">Ge</a>
-                    <a >Ru</a>
+                    <a 
+                        *ngFor="let lang of languages" 
+                        (click)="getActive(lang, lang.clickLang)"  
+                        [ngClass]="{'active': lang.status}">
+                        {{ lang.lang }}
+                    </a>
                 </div>
             </div>
             <div class="auth">
-                <a (click)="authentic()" routerLink="/auth" >{{!isauthtenticated ? 'Login' : 'Log Out'}}</a> 
+                <a (click)="authentic()" routerLink="/auth" >{{!isauthtenticated ? 'Login' : 'Log Out'}} </a> 
             </div>
         </div>
     </div>

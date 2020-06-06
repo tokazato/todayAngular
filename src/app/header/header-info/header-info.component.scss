@@ -110,6 +110,7 @@ header {
         width: 35%;
     }
 }
-.myClass {
-    color: red;
+.active {
+    order: -1;
+    color: red !important;
 }

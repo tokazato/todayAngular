@@ -4,6 +4,14 @@
         "aboutAs": "About As",
         "news": "News",
         "loans": "Loans",
+        "DropDownLink": {
+            "mortgageLoan": "Mortgage Loans",
+            "consumerLoan": "Consumer Loan",
+            "businessLoan": "Business Loan",
+            "agroLoan": "Agro Loans",
+            "autoLoan": "Auto Loan",
+            "fastLoan": "Fast Loan"
+        },
         "fillApp": "Fill Application",
         "calculator": "Calculator",
         "contact": "Contact"
